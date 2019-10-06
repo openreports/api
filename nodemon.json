@@ -1,6 +1,9 @@
 {
   "exec": "ts-node server",
   "ext": "ts",
+  "env": {
+    "NODE_ENV": "development"
+  },
   "watch": [
     "server",
     ".env"

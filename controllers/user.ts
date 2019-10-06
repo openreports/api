@@ -41,7 +41,8 @@ async function create (req, res, next) {
       name: name
     })
   } catch(err) {
-    res.send({
+    res.status(400).json({
+      errorMessage: err.message,
       error: err
     })
   }

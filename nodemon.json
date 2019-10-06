@@ -6,6 +6,7 @@
   },
   "watch": [
     "server",
-    ".env"
+    "controllers",
+    "models"
   ]
 }

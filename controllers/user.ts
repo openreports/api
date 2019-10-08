@@ -52,8 +52,7 @@ async function create (req, res, next) {
         httpOnly: true
       })
       .json({
-        name: name,
-        token: token
+        name: name
       })
   } catch(err) {
     res

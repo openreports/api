@@ -5,7 +5,9 @@
   "main": "server/index.ts",
   "scripts": {
     "dev": "nodemon",
-    "postinstall": "install-types"
+    "postinstall": "install-types",
+    "build": "rm -rf build && tsc",
+    "start": "node build/server/index"
   },
   "keywords": [],
   "author": "",

@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt'
 import User, { IUser } from '../models/User'
+import { encode } from '../lib/jwt'
 
 const ROUNDS = parseInt(process.env.ROUNDS)
 
@@ -11,18 +12,22 @@ async function create (req, res, next) {
   } = req.body
 
   if (!name || !email || !password) {
-    res.status(400).json({
-      errorMessage: 'One or more of the fields are missing'
-    })
+    res
+      .status(400)
+      .json({
+        errorMessage: 'One or more of the fields are missing'
+      })
     return;
   }
 
   const user = await User.byEmail(email)
 
   if (user !== null) {
-    res.status(400).json({
-      errorMessage: 'Account with email address already exists'
-    })
+    res
+      .status(400)
+      .json({
+        errorMessage: 'Account with email address already exists'
+      })
     return;
   }
 
@@ -37,14 +42,24 @@ async function create (req, res, next) {
 
     await newUser.save()
 
-    res.status(201).json({
-      name: name
+    const token:String = await encode({
+      email
     })
+
+    res
+      .status(201)
+      .cookie('token', token)
+      .json({
+        name: name,
+        token: token
+      })
   } catch(err) {
-    res.status(400).json({
-      errorMessage: err.message,
-      error: err
-    })
+    res
+      .status(400)
+      .json({
+        errorMessage: err.message,
+        error: err
+      })
   }
 }
 

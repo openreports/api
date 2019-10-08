@@ -28,7 +28,10 @@ mongoose
 const { connection } = mongoose;
 
 // middlewares
-app.use(cors())
+app.use(cors({
+  credentials: true,
+  origin: process.env.APP_URL
+}))
 app.use(bodyParser.json({
   type: 'application/json'
 }))

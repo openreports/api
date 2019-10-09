@@ -5,6 +5,8 @@ import mongoose from 'mongoose'
 // middlewares
 import cors from 'cors'
 import bodyParser from 'body-parser'
+import cookieParser from 'cookie-parser'
+import auth from './middlewares/auth'
 
 import routes from './routes'
 
@@ -35,6 +37,10 @@ app.use(cors({
 app.use(bodyParser.json({
   type: 'application/json'
 }))
+app.use(cookieParser())
+
+// auth
+app.use(auth)
 
 routes(app)
 

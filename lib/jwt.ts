@@ -1,7 +1,8 @@
 import jwt from 'jsonwebtoken'
 
 export interface Payload {
-  email: String
+  email: String,
+  name: String
 }
 
 async function encode (payload:Payload):Promise<String> {

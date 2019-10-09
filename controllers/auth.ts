@@ -7,6 +7,15 @@ async function logout (_req, res) {
     })
 }
 
+async function check (req, res) {
+  res
+    .status(200)
+    .send({
+      user: req.user
+    })
+}
+
 export default {
-  logout
+  logout,
+  check
 }

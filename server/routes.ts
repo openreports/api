@@ -6,6 +6,6 @@ export default (app) => {
     res.send('Hello from the other side 💠 of Open Reports')
   })
   app.post('/users', UserController.create)
-
+  app.post('/auth', AuthController.check)
   app.post('/logout', AuthController.logout)
 }

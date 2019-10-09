@@ -43,7 +43,8 @@ async function create (req, res, next) {
     await newUser.save()
 
     const token:String = await encode({
-      email
+      email,
+      name
     })
 
     res

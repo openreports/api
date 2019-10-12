@@ -5,7 +5,11 @@ export default (app) => {
   app.get('/', (_req, res) => {
     res.send('Hello from the other side 💠 of Open Reports')
   })
+
   app.post('/users', UserController.create)
-  app.post('/auth', AuthController.check)
+
+  app.get('/auth', AuthController.check)
+  app.post('/auth', AuthController.create)
+
   app.post('/logout', AuthController.logout)
 }

@@ -20,6 +20,7 @@
     "dotenv-flow": "^3.1.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
+    "moesif-express": "^2.9.11",
     "mongoose": "^5.7.3",
     "validator": "^11.1.0"
   },

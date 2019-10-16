@@ -6,6 +6,7 @@ import mongoose from 'mongoose'
 import cors from 'cors'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
+import moesifExpress from 'moesif-express'
 import auth from './middlewares/auth'
 
 import routes from './routes'
@@ -14,6 +15,13 @@ const PORT:number = parseInt(process.env.PORT || '3000', 10)
 const DB:string = process.env.DB
 
 const app:Express = express()
+
+const moesifMiddleware = moesifExpress({
+  applicationId: process.env.MOESIF_ID,
+  logBody: true
+})
+
+app.use(moesifMiddleware)
 
 mongoose
   .connect(DB, {

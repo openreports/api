@@ -1,5 +1,6 @@
 import UserController from '../controllers/user'
 import AuthController from '../controllers/auth'
+import ProjectController from '../controllers/project'
 
 export default (app) => {
   app.get('/', (_req, res) => {
@@ -12,4 +13,6 @@ export default (app) => {
   app.post('/auth', AuthController.create)
 
   app.post('/logout', AuthController.logout)
+
+  app.post('/projects', ProjectController.create)
 }

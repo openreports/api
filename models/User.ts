@@ -5,6 +5,7 @@ export interface IUser extends Document {
   name: string;
   email: string;
   password: string;
+  project?: string;
 }
 
 export interface IUserModel extends Model<IUser> {
@@ -31,6 +32,10 @@ const UserSchema:Schema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
+    trim: true
+  },
+  project: {
+    type: String,
     trim: true
   }
 }, {

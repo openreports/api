@@ -57,6 +57,7 @@ async function create(req, res) {
       await user.save()
 
       res
+        .cookie('project', slug)
         .status(201)
         .json({
           name: name,

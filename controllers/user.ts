@@ -52,6 +52,7 @@ async function create (req, res, next) {
       .cookie('token', token, {
         httpOnly: true
       })
+      .cookie('name', name)
       .json({
         name: name
       })

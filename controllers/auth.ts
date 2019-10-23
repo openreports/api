@@ -4,6 +4,8 @@ import { encode } from '../lib/jwt';
 
 async function logout (_req, res) {
   res.clearCookie('token')
+  res.clearCookie('name')
+  res.clearCookie('project')
   res
     .status(200)
     .send({
@@ -41,11 +43,16 @@ async function create (req, res) {
           name: user.name
         })
 
+        if (user.project) {
+          res.cookie('project', user.project)
+        }
+
         res
           .status(201)
           .cookie('token', token, {
             httpOnly: true
           })
+          .cookie('name', user.name)
           .send({
             user
           })
@@ -61,7 +68,7 @@ async function create (req, res) {
       res
         .status(404)
         .send({
-          message: 'We couldn\'t find any acccount associated with this email address'
+          errorMessage: 'We couldn\'t find any acccount associated with this email address'
         })
     }
   } catch (err) {
